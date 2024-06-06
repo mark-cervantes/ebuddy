@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="style.css">
+	<script type="module" src="script.js" defer></script>
+	<title>E-Buddy Login Page</title>
+</head>
+
+<body>
+<div class="container" id="container">
+
+	<div class="toggle-container">
+		<div class="toggle">
+			<div class="toggle-panel toggle-left">
+				<img src="images/UNC_Seal.png" width="256" height="88">
+				<br>
+				<h1>Welcome!</h1>
+				<p>Enter your personal details to use all of site features</p>
+				</br>
+				<button class="hidden" id="login">Log In</button>
+			</div>
+			<div class="toggle-panel toggle-right">
+				<img src="Dashboard/images/unc.png" width="90" height="90">
+				<br>
+				<h1>Hello, UNCean!</h1>
+				<p>Register with your personal details to use all of site features</p>
+				</br>
+				<button class="hidden" id="register">Sign Up</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="form-container sign-up">
+		<form id="signup">
+			<h1>Create Account</h1>
+			<div class="social-icons">
+
+				<button class="icon" id="googleSignUp"><i class="fa-brands fa-google-plus-g"></i></button>
+
+				<a class="icon" href="#">
+					<i id="fbSignIn" class="fa-brands fa-facebook-f"></i>
+				</a>
+				<a class="icon" href="#">
+					<i id="twitterSignIn" class="fa-brands fa-twitter"></i>
+				</a>
+				<a class="icon" href="#">
+					<i id="appleSignIn" class="fa-brands fa-apple"></i>
+				</a>
+
+			</div>
+			<span>or use your email for registeration</span>
+			<input type="text" placeholder="Name" id="RegName" required>
+			<input type="email" placeholder="Email" id="RegEmail" required>
+			<input type="password" placeholder="Password" id="RegPassword" required>
+			<button class="btn btn-primary" type="submit">Sign Up</button>
+		</form>
+	</div>
+
+	<div class="account-created" id="successMessage" style="display: none;">
+		<p>You've successfully created your account.</p>
+		<button id="okButton" type="button">Continue</button>
+	</div>
+
+	<div id="overlay" style="display: none;"></div>
+
+
+	<div class="form-container sign-in">
+		<form id="signin">
+			<h1>Sign In</h1>
+			<div class="social-icons">
+				<button class="icon" id="googleSignIn"><i class="fa-brands fa-google-plus-g"></i></button>
+
+				<a class="icon" href="#">
+					<i id="fbSignIn" class="fa-brands fa-facebook-f"></i>
+				</a>
+				<a class="icon" href="#">
+					<i id="twitterSignIn" class="fa-brands fa-twitter"></i>
+				</a>
+				<a class="icon" href="#">
+					<i id="appleSignIn" class="fa-brands fa-apple"></i>
+				</a>
+
+			</div>
+			<span>or use your email password</span>
+			<input type="email" placeholder="Email" id="email" required>
+			<input type="password" placeholder="Password" id="password" required>
+			<a href="#">Forget Your Password?</a>
+
+<!--			<a href="Dashboard/dashboard.html">-->
+				<button type="submit" class="btn btn-primary">Log in</button>
+<!--			<input type="submit" class="btn btn-primary" value="Log in">-->
+<!--			</a>-->
+		</form>
+	</div>
+</div>
+
+<script src="script.js"></script>
+
+<script type="module">
+	// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firebaseApp.js";
+	// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+	// import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+	// import {
+	// 	getAuth,
+	// 	createUserWithEmailAndPassword,
+	// 	GoogleAuthProvider,
+	// 	signInWithRedirect,
+	// 	getRedirectResult
+	// } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+	//
+	// const firebaseConfig = {
+	// 	apiKey: "AIzaSyB5YHU4AF9a5Xn-sywnYMmA0Exe-hvNYfI",
+	// 	authDomain: "e-buddy-8c08f.firebaseapp.com",
+	// 	projectId: "e-buddy-8c08f",
+	// 	storageBucket: "e-buddy-8c08f.appspot.com",
+	// 	messagingSenderId: "377857778256",
+	// 	appId: "1:377857778256:web:a2de0ec20ec8b1eee52755",
+	// 	measurementId: "G-55NWQWF1XL"
+	// };
+	//
+	// // Initialize Firebase
+	// const firebaseApp = initializeApp(firebaseConfig);
+	// const analytics = getAnalytics(firebaseApp);
+	// const db = getDatabase();
+	// const provider = new GoogleAuthProvider();
+	// const auth = getAuth(firebaseApp);
+	//
+	// let name = document.getElementById('RegName');
+	// let email = document.getElementById('RegEmail');
+	// let password = document.getElementById('RegPassword');
+	// let signup = document.getElementById('signup');
+	//
+	// let RegisterUser = evt => {
+	// 	evt.preventDefault();
+	// 	createUserWithEmailAndPassword(auth, email.value, password.value)
+	// 		.then((credentials) => {
+	// 			console.log(credentials);
+	// 			displaySuccessMessage();
+	// 			document.getElementById('RegName').value = '';
+	// 			document.getElementById('RegEmail').value = '';
+	// 			document.getElementById('RegPassword').value = '';
+	// 			// Reset placeholders
+	// 			document.getElementById('RegName').placeholder = 'Name';
+	// 			document.getElementById('RegEmail').placeholder = 'Email';
+	// 			document.getElementById('RegPassword').placeholder = 'Password';
+	// 		})
+	// 		.catch((error) => {
+	// 			alert(error.message);
+	// 			console.log(error.code);
+	// 			console.log(error.message);
+	// 		})
+	// }
+
+	// signup.addEventListener('submit', RegisterUser)
+
+	document.getElementById('okButton').addEventListener('click', function () {
+		document.getElementById('successMessage').style.display = 'none';
+		document.getElementById('overlay').style.display = 'none';
+	});
+
+	function displaySuccessMessage() {
+		document.getElementById('successMessage').style.display = 'block';
+		document.getElementById('overlay').style.display = 'block';
+		document.getElementById('signupContainer').style.pointerEvents = 'none';
+	}
+
+	/* LOGIN */
+	// const signinForm = document.getElementById('signin');
+	const signinForm = document.querySelector('#signin')
+	signinForm.addEventListener('submit', (evt) => {
+		evt.preventDefault();
+		const email = document.getElementById('email').value;
+		const password = document.getElementById('password').value;
+		fetch(`http://localhost:3000/auth/login`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: email,
+				password: password
+			})
+		})
+			.then(response => response.json())
+			.then((userCredential) => {
+				// Signed in
+				const user = userCredential.user;
+				document.cookie = `userID=${user.uid}; path=/; SameSite=None; HttpOnly`;
+				console.log(`user: ${user}`);
+				fetch('http://localhost:3000/loopback')
+					.then(data => data.json())
+					.then(response => {
+					console.log(JSON.stringify(response))
+				})
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				alert(errorMessage);
+			});
+	});
+
+
+	/* LOGIN USING GOOGLE */
+	// googleSignIn.addEventListener('click', () => {
+	//     signInWithRedirect(auth, provider);
+	//     getRedirectResult(auth)
+	//         .then((result) => {
+	//             // This gives you a Google Access Token. You can use it to access Google APIs.
+	//             const credential = GoogleAuthProvider.credentialFromResult(result);
+	//             const token = credential.accessToken;
+	//
+	//             // The signed-in user info.
+	//             const user = result.user;
+	//             // IdP data available using getAdditionalUserInfo(result)
+	//             // ...
+	//             alert(user.displayName);
+	//         }).catch((error) => {
+	//             // Handle Errors here.
+	//             const errorCode = error.code;
+	//             const errorMessage = error.message;
+	//             // The email of the user's account used.
+	//             const email = error.customData.email;
+	//             // The AuthCredential type that was used.
+	//             const credential = GoogleAuthProvider.credentialFromError(error);
+	//             // ...
+	//         });
+	// });
+
+
+</script>
+
+</body>
+
+</html>

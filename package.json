@@ -1,0 +1,24 @@
+{
+  "name": "online-reviewer-fullstack",
+  "version": "1.0.0",
+  "description": "A Senior Project for compliance for University of Nueva Caceres, BSCS curriculum",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "npx nodemon --inspect index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "c4.5": "^0.0.3",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "firebase": "^10.12.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@firebase/auth-types": "^0.12.2"
+  }
+}

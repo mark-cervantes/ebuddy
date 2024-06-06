@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MySkyPower / CREATIVE PRODUCTION GROUP We are the producers of your ideas. The workshop – the craftsmen – the designers – the engineers. Together we are one. One group of talented people who harness the power to build big ideas. From handmade to high- tech. With you we create. Bring us your ideas, designs, and dreams and we will build them. Whatever the scale. EVERY DAY WE BUILD BIG IDEAS We are MySkyPower." />
+    <meta property="og:title" content="My Sky Power | MSP /">
+    <meta property="og:description" content="MySkyPower / CREATIVE PRODUCTION GROUP We are the producers of your ideas. The workshop – the craftsmen – the designers – the engineers. Together we are one. One group of talented people who harness the power to build big ideas. From handmade to high- tech. With you we create. Bring us your ideas, designs, and dreams and we will build them. Whatever the scale. EVERY DAY WE BUILD BIG IDEAS We are MySkyPower." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.myskypower.net/" />
+
+    <title>Quiz | E-buddy</title>
+    <link rel="stylesheet" href="cdi-style.css">
+    <!-- FontAweome CDN Link for Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+</head>
+<body>
+    <div class="container">
+            <div class="image_container">
+                <img src="img/banner-CDI.png">
+                <div class="overlay_text">
+                    <h2>Crime Detection and Investigation</h2>   
+                    <br></br>                         
+                    <div class="scores-container">
+                        <div class="score-item">
+                            <span class="label">Highest Score:</span>
+                            <span id="highest-score">0</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="label">Current Score:</span>
+                            <span id="quiz-score">0</span>
+                        </div>
+                        <br></br>
+                        <div class="score-item">
+                            <span class="label">Attempts:</span>
+                            <span id="attempts">0</span>
+                        </div>
+                        </div>
+                    </div>                    
+                </div>                
+            </div>
+
+
+        <div class="main_content">
+            <div class="info_box activeInfo">
+                <div class="info-title"><span>Quiz Instructions</span></div>
+                    <div class="info-list">
+                        <div class="info">1. You have <span>30 seconds</span> to answer each question.</div>
+                        <div class="info">2. Once an answer is selected, it cannot be changed.</div>
+                        <div class="info">3. You cannot select an answer after time runs out.</div>
+                        <div class="info">4. Exiting the quiz is not allowed while answering questions.</div>
+                        <div class="info">5. Points are awarded based on correct answers.</div>
+                    </div>
+
+                <div class="buttons">
+                    <button class="quit">Back</button>
+                    <button class="restart">Start</button>
+                </div>
+            </div>
+
+            <!-- Quiz Box -->
+            <div class="quiz_box">
+                <header>
+                    <div class="title">Quiz</div>
+                    <div class="timer">
+                        <div class="time_left_txt">Time Left</div>
+                        <div class="timer_sec">30</div>
+                    </div>
+                    <div class="time_line"></div>
+                </header>
+                <section>
+                    <div class="que_text">
+                        <!-- Here I've inserted question from JavaScript -->
+                    </div>
+                    <div class="option_list">
+                        <!-- Here I've inserted options from JavaScript -->
+                    </div>
+                </section>
+
+                <!-- footer of Quiz Box -->
+                <footer>
+                    <div class="total_que">
+                        <!-- Here I've inserted Question Count Number from JavaScript -->
+                    </div>
+                    <button class="next_btn">Next</button>
+                </footer>
+            </div>
+
+            <!-- Result Box -->
+            <div class="result_box">
+                <div>
+                    <img src="img/done.gif" width="186.66" height="140">
+                </div>
+                <div class="complete_text">You've completed the Quiz!</div>
+                <div class="score_text">
+                    <!-- Here I've inserted Score Result from JavaScript -->
+                </div>
+                <div class="buttons">
+                    <button class="restart">Retake</button>
+                    <button class="quit">Quit</button>
+                </div>
+            </div>
+
+
+
+            <div class="right-section">
+                <div class="nav">
+                    <div class="dark-mode">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                    </div>
+                    <div class="profile">
+                        <div class="info">
+                            <p style="color: var(--color-dark-variant);">Hey, <b style="color: white;">Jennie</b></p>
+                            <small class="text-muted">Reviewer</small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="../images/profile-01.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Function to navigate 
+        function goBack() {
+            document.body.classList.add('fade-out', 'active');
+            setTimeout(() => {
+                window.location.href = '../dashboard.html';
+            }, 1000); // Duration should match the transition duration in the CSS
+        }
+
+        // Ensure the body starts with full opacity
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('fade-out');
+        });
+        
+
+        
+    </script>
+
+    <script src="js/questions.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

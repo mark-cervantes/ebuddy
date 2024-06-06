@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="./dashboard-style.css">
+    <title>Dashboard | E-Buddy</title>
+</head>
+
+<body>
+    <!--BLUR-->
+    <div class="blur-overlay" id="blurOverlay">
+        <div class="pre-test" id="preTest">
+            <!-- Info Box -->
+            <div class="pre_test activeInfo">
+                <h1 style="text-align: center;">Ready to Test Your Criminology Knowledge?</h1>
+                <div class="info-title"><span>This is a required Pre-Test designed to gauge your understanding of key criminology concepts.</span></div>
+                <div class="info-list">
+                    <div class="info">Here's what to keep in mind:</div>
+                    <div class="info">1. You will have <span>30 Minutes</span> to complete the entire pre-test.</div>
+                    <div class="info">2. The pre-test is designed to be completed at once. There's no option to save and return later.</div>
+                    <div class="info">3. Choose the answer that best reflects your knowledge. Once chosen, your answers cannot be changed.</div>
+                    <div class="info">4. Press Enter or click "Next" to proceed to the next question.</div>
+                    <div class="info">5. Be honest with yourself! This pre-test is meant to identify your strengths and weaknesses to help you focus your studies.</div>
+                    <div class="info">6. Good luck! We believe in you.</div>
+                </div>
+                
+                <div class="buttons">
+                    <button class="quit">x</button>
+                    <button class="restart" id="startTestButton">Start</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Quiz Box -->
+        <div class="quiz_box" id="quizBox">
+            <header>
+                <div class="title">PRE-TEST</div>
+                <div class="timer">
+                    <div class="time_left_txt">Time Left</div>
+                    <div class="timer_sec"></div>
+                </div>
+                <div class="time_line"></div>
+            </header>
+            <section>
+                <div class="que_text">
+                    <!-- Here I've inserted question from JavaScript -->
+                </div>
+                <div class="option_list">
+                    <!-- Here I've inserted options from JavaScript -->
+                </div>
+            </section>
+    
+            <!-- footer of Quiz Box -->
+            <footer>
+                <div class="total_que">
+                    <!-- Here I've inserted Question Count Number from JavaScript -->
+                </div>
+                <button class="next_btn">Next</button>
+            </footer>
+        </div>
+    
+        <!-- Result Box -->
+        <div class="result_box" id="resultBox">
+            <div>
+                <img src="images/nice.png" width="200" height="200">
+            </div>
+            <div class="complete_text">You've completed the Pre-Test!</div>
+            <div class="score_text">
+                <!-- Here I've inserted Score Result from JavaScript -->
+            </div>
+            <div>
+                <br></br>
+                <p data-subject="Crime Detection and Investigation">Crime Detection and Investigation<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                <p data-subject="Criminalistics">Criminalistics<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                <p data-subject="Criminal Law and Jurisprudence">Criminal Law and Jurisprudence<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                <p data-subject="Correctional Administration">Correctional Administration<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                <p data-subject="Ethics and Criminal Sociology">Ethics and Criminal Sociology<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                <p data-subject="Law Enforcement Administration">Law Enforcement Administration<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                <br></br>
+            </div>
+                   
+            <div class="buttons">
+                <button class="restart" style="display: none;"></button>
+                <button class="quit" id="doneButton">Done</button>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <p>  </p>
+                    <p>  </p>                    
+                    <p>  </p>
+                    <img src="images/logoonly.png">
+                    <h2>E<span class="danger">-buddy</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        home
+                    </span>
+                    <h3>Introduction</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>Profile</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Subjects</h3>
+                </a>
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Statistics</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        book
+                    </span>
+                    <h3>Lecture</h3>
+                    <!--<span class="message-count">1</span>-->
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        star
+                    </span>
+                    <h3>Rankings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Reports</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="../index.html">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>            
+            <!-- Introduction -->
+            <div class="dashboard-content">
+                <h1>Welcome, future Criminologist!</h1>
+                    <br>
+                        <p>Welcome to E-Buddy, your ultimate companion on your journey to becoming a licensed criminologist. Our platform is designed to provide you with the tools and resources you need to succeed in the Criminology Licensure Examination (CLE).</p>
+                    </br>
+                    <br>
+                        <p>Explore personalized study materials, interactive quizzes, and expert guidance tailored to your individual learning needs. With E-Buddy, you can take control of your preparation and maximize your chances of passing the CLE with flying colors.</p>
+                    </br>
+                    <img src="images/crim.jpg" alt="Dashboard Image">
+                    <br>
+                        <p>Start your journey with us today and take the first step towards a successful career in criminology!</p>
+                    </br>
+                </div>
+            <!-- End of Introduction -->
+
+            <!-- Rankings -->
+            <div class="rankings-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                            <th>Passing Rate</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <a href="#">Show All</a>
+            </div>
+            <!-- End of Rankings -->
+
+            <!-- Profile -->
+            <div class="profile-content">
+                <h1>Profile Details</h1>
+                <div class="profile-picture">
+                    <img src="images/profile-01.jpg" alt="Profile Picture">
+                </div>
+                
+                <div class="profile-details">
+                    <table>
+                        <tr>
+                            <td><strong>Name:</strong></td>
+                            <td>Jennie Kim</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email:</strong></td>
+                            <td>jennierubyjane@unc.edu.ph</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Course:</strong></td>
+                            <td>Criminology</td>
+                        </tr>
+                        <tr>
+                            <td><strong>University:</strong></td>
+                            <td>University of Nueva Caceres</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Student ID:</strong></td>
+                            <td>04-15003</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date of Birth:</strong></td>
+                            <td>January 16, 1996</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gender:</strong></td>
+                            <td>Female</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phone Number:</strong></td>
+                            <td>+63595959559</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Address:</strong></td>
+                            <td>123 Main Street, City, South Korea</td>
+                        </tr> 
+                    </table>
+                </div>
+                <br></br>
+                <button class="profile-button" type="button">Edit Profile</button>
+                <br></br>
+            </div>
+            <!-- End of Profile -->
+
+
+
+
+
+            <!-- Subject -->
+            <!--
+                Crime Detection and Investigation
+                Criminalistics
+                Criminal Law and Jurisprudence
+                Correctional Administration
+                Ethics and Criminal Sociology
+                Law Enforcement Administration
+            -->
+            
+        
+            <div class="subject-content">
+                <div class="subject-box" data-subject="Crime Detection and Investigation" onclick="navigateTo('CDI/cdi-quiz.html')">
+                    <img src="images/subject1.jpg" alt="Crime Detection and Investigation" style="width:100%">
+                    <br>
+                        <h3>Crime Detection and Investigation</h3>
+                    </br>
+                    <span class="subject_percentage"></span>
+                </div>
+
+                <div class="subject-box" data-subject="Criminalistics" onclick="navigateTo('CRIMTIC/crimtic-quiz.html')">
+                    <img src="images/subject2.jpg" alt="Criminalistics" style="width:100%">
+                    <br>
+                        <h3>Criminalistics</h3>
+                    </br>
+                    <span class="subject_percentage"></span>
+                </div>
+
+                <div class="subject-box" data-subject="Criminal Law and Jurisprudence" onclick="navigateTo('CLJ/clj-quiz.html')">
+                    <img src="images/subject3.jpg" alt="Criminal Law and Jurisprudence" style="width:100%">
+                    <br>
+                        <h3>Criminal Law and Jurisprudence</h3>
+                    </br>
+                    <span class="subject_percentage"></span>
+                </div>
+
+                <div class="subject-box" data-subject="Correctional Administration" onclick="navigateTo('CORAD/corad-quiz.html')">
+                    <img src="images/subject4.jpg" alt="Correctional Administration" style="width:100%">
+                    <br>
+                        <h3>Correctional Administration</h3>
+                    </br>
+                    <span class="subject_percentage"></span>
+                </div>
+
+                <div class="subject-box" data-subject="Ethics and Criminal Sociology" onclick="navigateTo('CRIMSOC/crimsoc-quiz.html')">
+                    <img src="images/subject5.jpg" alt="Ethics and Criminal Sociology" style="height:100%">
+                    <br>
+                        <h3>Ethics and Criminal Sociology</h3>
+                    </br>
+                    <span class="subject_percentage"></span>
+                </div>
+
+                <div class="subject-box" data-subject="Law Enforcement Administration" onclick="navigateTo('LEA/lea-quiz.html')">
+                    <img src="images/subject6.jpg" alt="Law Enforcement Administration" style="width:100%">
+                    <br>
+                        <h3>Law Enforcement Administration</h3>
+                    </br>
+                    <span class="subject_percentage"></span>
+                </div>
+            </div>
+
+            <!-- End of Subject -->
+
+            
+
+
+
+            
+            <!-- Statistics -->
+            <div class="statistics-content">
+                <h1>Profile Statistics</h1>
+                                
+                <br></br>
+                <h2 style="text-align: center;">Pre-Test Results</h2>                
+                <br></br>
+                <h4><strong style="margin: 180px;">Subject:</strong></h4>
+                <!--
+                    <p>Crime Detection and Investigation<span style="float: right;">85%</span></p>
+                    <p>Criminalistics<span style="float: right;">72%</span></p>
+                    <p>Criminal Law and Jurisprudence<span style="float: right;">90%</span></p>
+                    <p>Correctional Administration<span style="float: right;">68%</span></p>
+                    <p>Ethics and Criminal Sociology<span style="float: right;">79%</span></p>
+                    <p>Law Enforcement Administration<span style="float: right;">93%</span></p>
+                -->
+
+                <div class="stats-container">
+                    <div class="skill-box">
+                        <div class="skill-bar">
+                            <span class="skill-per CDI">
+                                <span class="tooltip">0%</span>
+                            </span>
+                            <p data-subject="Crime Detection and Investigation">Crime Detection and Investigation<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                            <p class="subject_details" style="float: right; padding-left: 100px;">0/0</p>
+                            <div class="popup hidden">This is a popup for Crime Detection and Investigation!</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per CRIMTIC">
+                                <span class="tooltip">0%</span>
+                            </span>
+                            <p data-subject="Criminalistics">Criminalistics<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                            <p class="subject_details" style="float: right; padding-left: 100px;">0/0</p>
+                            <div class="popup hidden">This is a popup for Criminalistics!</div>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per CLJ">
+                                <span class="tooltip">0%</span>
+                            </span>
+                            <p data-subject="Criminal Law and Jurisprudence">Criminal Law and Jurisprudence<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                            <p class="subject_details" style="float: right; padding-left: 100px;">0/0</p>
+                            <div class="popup hidden">This is a popup for Criminal Law and Jurisprudence!</div>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per CORAD">
+                                <span class="tooltip">0%</span>
+                            </span>
+                            <p data-subject="Correctional Administration">Correctional Administration<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                            <p class="subject_details" style="float: right; padding-left: 100px;">0/0</p>
+                            <div class="popup hidden">This is a popup for Correctional Administration!</div>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per CRIMSOC">
+                                <span class="tooltip">0%</span>
+                            </span>
+                            <p data-subject="Ethics and Criminal Sociology">Ethics and Criminal Sociology<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                            <p class="subject_details" style="float: right; padding-left: 100px;">0/0</p>
+                            <div class="popup hidden">This is a popup for Ethics and Criminal Sociology!</div>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per LEA">
+                                <span class="tooltip">0%</span>
+                            </span>
+                            <p data-subject="Law Enforcement Administration">Law Enforcement Administration<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                            <p class="subject_details" style="float: right; padding-left: 100px;">0/0</p>
+                            <div class="popup hidden">This is a popup for Law Enforcement Administration!</div>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per OA">
+                                <span class="tooltip">0%</span>
+                            </span>
+                            <p data-subject="OverAll">Overall<span class="subject_percentage" style="float: right; padding-left: 100px;"></span></p>
+                            <p class="subject_details" style="float: right; padding-left: 100px;">0/0</p>
+                            <div class="popup hidden">This is a popup for Overall!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <br></br>
+                <br></br>
+                <h2 style="text-align: center;">Quiz Results</h2>               
+                <br></br>
+                <h4><strong style="margin: 180px;">Subject Passing Rates</strong></h4>
+                   
+                <div class="stats-container">
+
+                    <div class="skill-box">
+                        <p>Crime Detection and Investigation<span style="float: right; padding-left: 100px;"></span></p>
+                        <br>
+                        <p>Highest Score: <span style="float: right; padding-left: 100px;" class="quiz-highest-score">/20</span></p>
+                        <p>Recent Score: <span style="float: right; padding-left: 100px;" class="quiz-recent-score">/20</span></p>
+                        <p>Attempts: <span style="float: right; padding-left: 100px;" class="quiz-attempts"></span></p>
+                
+                        <div class="navigation">
+                            <button class="prev-btn">&lt;</button>
+                            <span class="attempt-label clickable">Attempt 1</span>
+                            <button class="next-btn">&gt;</button>
+                        </div>
+                        <div class="attempt-container hidden">
+                            <div class="content">
+                                <p>Attempt 1 Content: Example Answer</p>
+                            </div>
+                        </div>
+                
+                        <br>
+                        <p>Criminalistics<span style="float: right; padding-left: 100px;"></span></p>
+                        <br>
+                        <p>Highest Score: <span style="float: right; padding-left: 100px;" class="quiz-highest-score">/20</span></p>
+                        <p>Recent Score: <span style="float: right; padding-left: 100px;" class="quiz-recent-score">/20</span></p>
+                        <p>Attempts: <span style="float: right; padding-left: 100px;" class="quiz-attempts"></span></p>
+                
+                        <div class="navigation">
+                            <button class="prev-btn">&lt;</button>
+                            <span class="attempt-label clickable">Attempt 1</span>
+                            <button class="next-btn">&gt;</button>
+                        </div>
+                        <div class="attempt-container hidden">
+                            <div class="content">
+                                <p>Attempt 1 Content: Example Answer</p>
+                            </div>
+                        </div>
+                
+                        <br>
+                        <p>Criminal Law and Jurisprudence<span style="float: right; padding-left: 100px;"></span></p>
+                        <br>
+                        <p>Highest Score: <span style="float: right; padding-left: 100px;" class="quiz-highest-score">/20</span></p>
+                        <p>Recent Score: <span style="float: right; padding-left: 100px;" class="quiz-recent-score">/20</span></p>
+                        <p>Attempts: <span style="float: right; padding-left: 100px;" class="quiz-attempts"></span></p>
+                
+                        <div class="navigation">
+                            <button class="prev-btn">&lt;</button>
+                            <span class="attempt-label clickable">Attempt 1</span>
+                            <button class="next-btn">&gt;</button>
+                        </div>
+                        <div class="attempt-container hidden">
+                            <div class="content">
+                                <p>Attempt 1 Content: Example Answer</p>
+                            </div>
+                        </div>
+                
+                        <br>
+                        <p>Correctional Administration<span style="float: right; padding-left: 100px;"></span></p>
+                        <br>
+                        <p>Highest Score: <span style="float: right; padding-left: 100px;" class="quiz-highest-score">/20</span></p>
+                        <p>Recent Score: <span style="float: right; padding-left: 100px;" class="quiz-recent-score">/20</span></p>
+                        <p>Attempts: <span style="float: right; padding-left: 100px;" class="quiz-attempts"></span></p>
+                
+                        <div class="navigation">
+                            <button class="prev-btn">&lt;</button>
+                            <span class="attempt-label clickable">Attempt 1</span>
+                            <button class="next-btn">&gt;</button>
+                        </div>
+                        <div class="attempt-container hidden">
+                            <div class="content">
+                                <p>Attempt 1 Content: Example Answer</p>
+                            </div>
+                        </div>
+                
+                        <br>
+                        <p>Ethics and Criminal Sociology<span style="float: right; padding-left: 100px;"></span></p>
+                        <br>
+                        <p>Highest Score: <span style="float: right; padding-left: 100px;" class="quiz-highest-score">/20</span></p>
+                        <p>Recent Score: <span style="float: right; padding-left: 100px;" class="quiz-recent-score">/20</span></p>
+                        <p>Attempts: <span style="float: right; padding-left: 100px;" class="quiz-attempts"></span></p>
+                
+                        <div class="navigation">
+                            <button class="prev-btn">&lt;</button>
+                            <span class="attempt-label clickable">Attempt 1</span>
+                            <button class="next-btn">&gt;</button>
+                        </div>
+                        <div class="attempt-container hidden">
+                            <div class="content">
+                                <p>Attempt 1 Content: Example Answer</p>
+                            </div>
+                        </div>
+                
+                        <br>
+                        <p>Law Enforcement Administration<span style="float: right; padding-left: 100px;"></span></p>
+                        <br>
+                        <p>Highest Score: <span style="float: right; padding-left: 100px;" class="quiz-highest-score">/20</span></p>
+                        <p>Recent Score: <span style="float: right; padding-left: 100px;" class="quiz-recent-score">/20</span></p>
+                        <p>Attempts: <span style="float: right; padding-left: 100px;" class="quiz-attempts"></span></p>
+                
+                        <div class="navigation">
+                            <button class="prev-btn">&lt;</button>
+                            <span class="attempt-label clickable">Attempt 1</span>
+                            <button class="next-btn">&gt;</button>
+                        </div>
+                        <div class="attempt-container hidden">
+                            <div class="content">
+                                <p>Attempt 1 Content: Example Answer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
+                        
+
+                    
+
+
+<!--  OLD QUIZ RESULT STATS
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCRIMTIC">
+                                <span class="tooltip">100%</span>
+                            </span>
+                            <p>Crime Detection and Investigation<span style="float: right; padding-left: 100px;">100/100</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCRIMTIC">
+                                <span class="tooltip">100%</span>
+                            </span>
+                            <p>Criminalistics<span style="float: right; padding-left: 100px;">100/100</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCLJ">
+                                <span class="tooltip">75%</span>
+                            </span>
+                            <p>Criminal Law and Jurisprudence<span style="float: right; padding-left: 100px;">75/100</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCORAD">
+                                <span class="tooltip failed">50%</span>
+                            </span>
+                            <p>Correctional Administration<span style="float: right; padding-left: 100px;">50/100</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCRIMSOC">
+                                <span class="tooltip">95%</span>
+                            </span>
+                            <p>Ethics and Criminal Sociology<span style="float: right; padding-left: 100px;">95/100</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizLEA">
+                                <span class="tooltip failed">20%</span>
+                            </span>
+                            <p>Law Enforcement Administration<span style="float: right; padding-left: 100px;">20/100</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizOA" style="width: 90;">
+                                <span class="tooltip">70%</span>
+                            </span>
+                            <p>Overall<span style="float: right; padding-left: 100px;">420/600</span></p>
+                        </div>
+                    </div>
+                </div>
+-->    
+              
+
+                <br></br>
+                <br></br>
+                <h2 style="text-align: center;">Overall Performance</h2>               
+                <br></br>   
+                <div class="stats-container">
+                    <div class="skill-box">
+                        <div class="skill-bar">
+                            <span class="skill-per quizCDI">
+                                <span class="tooltip">80%</span>
+                            </span>
+                            <p>Pre-test Score<span style="float: right; padding-left: 100px;">80.36</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizOA">
+                                <span class="tooltip">70%</span>
+                            </span>
+                            <p>Average Score<span style="float: right; padding-left: 100px;">70.23</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCLJ">
+                                <span class="tooltip">75%</span>
+                            </span>
+                            <p>Passing Rate<span style="float: right; padding-left: 100px;">75.19</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCDI">
+                                <span class="tooltip">80%</span>
+                            </span>
+                            <p>Performance<span style="float: right; padding-left: 100px;">80.10</span></p>
+                        </div>
+                    </div>
+                    <div class="skill-box">
+                        <br></br>
+                        <div class="skill-bar">
+                            <span class="skill-per quizCRIMSOC">
+                                <span class="tooltip">95%</span>
+                            </span>
+                            <p>Mock Exam Score<span style="float: right; padding-left: 100px;">95.09</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Statistics -->
+
+
+
+            <!-- Lecture -->
+            <div class="lecture-content">  
+                <div style="display: flex; align-items: center;">
+                    <h1 style="margin-right: 10px;">Explore Texts or Listen In</h1>
+                    <img src="images/audio.png" alt="Audio Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                </div>
+                <p>Contains Textbooks, PDFs, PowerPoints, Flashcards, and Audio Lectures for your reading and reference.</p>
+                <div id="booksContainer">
+                    <div class="lecture-box" onclick="showBookContent(1)">
+                        <img src="images/book1.jpg" alt="Book 1" style="width:100%">
+                        <br>
+                            <h3>Introduction To Criminology</h3>
+                        </br>
+                    </div>
+
+                    <div class="lecture-box" onclick="showBookContent(2)">
+                        <img src="images/book2.jpg" alt="Book 2" style="width:100%">
+                        <br>
+                        <h3>Crime, Criminology & Penology</h3>
+                        </br>
+                    </div>
+                    
+                    <div class="lecture-box" onclick="showBookContent(3)">
+                        <img src="images/book3.jpg" alt="Book 3" style="width:100%">
+                        <br>
+                        <h3>Criminology</h3>
+                        </br>
+                    </div>
+                    
+                    <div class="lecture-box" onclick="showBookContent(4)">
+                        <img src="images/book4.jpg" alt="Book 4" style="width:100%">
+                        <br>
+                        <h3>Forensic Criminology</h3>
+                        </br>
+                    </div>
+                    
+                    <div class="lecture-box" onclick="showBookContent(5)">
+                        <img src="images/book5.jpg" alt="Book 5" style="width:100%">
+                        <br>
+                        <h3>Penology & Victimology</h3>
+                        </br>
+                    </div>
+                    
+                    <div class="lecture-box" onclick="showBookContent(6)">
+                        <img src="images/book6.jpg" alt="Book 6" style="width:100%">
+                        <br>
+                        <h3>Criminal Procedure</h3>
+                        </br>
+                    </div>
+                    
+                    <div class="lecture-box" onclick="showBookContent(7)">
+                        <img src="images/book7.jpg" alt="Book 7" style="width:100%">
+                        <br>
+                        <h3>Criminal Justice System</h3>
+                        </br>
+                    </div>
+                    
+                    <div class="lecture-box" onclick="showBookContent(8)">
+                        <img src="images/book8.jpg" alt="Book 8" style="width:100%">
+                        <br>
+                        <h3>Readings In Criminology</h3>
+                        </br>
+                    </div>
+                    
+                    <div class="lecture-box" onclick="showBookContent(9)">
+                        <img src="images/book9.jpg" alt="Book 9" style="width:100%">
+                        <br>
+                        <h3>Criminology Enhancement Manual</h3>
+                        </br>
+                    </div>
+                </div>
+
+                <div id="bookContent" style="display: none; position: relative; border: 1px solid black; padding: 10px;">
+                    <!-- Content for the selected book will be dynamically added here -->
+                    <div id="bookContentInner"></div>
+                    <button class="lecture-button" type="button" onclick="goBack()" >Back</button>
+                </div>
+            </div>
+            <!-- End of Lecture -->
+
+
+
+            
+
+            <!-- Reports -->
+            <div class="reports-content">
+                <div class="sales"> 
+                    <!--color green (sales)-->
+                    <!--color red (visits)-->
+                    <!--color blue (searches)-->           
+                    <div class="status">
+                        <div class="info">
+                            <h3>Average Score</h3>
+                            <h1>88%</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+88%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sales">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Performance</h3>
+                            <h1>92%</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="40" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+92%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Quiz Passing Percentage</h3>
+                            <h1>95%</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="40" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+95%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visits">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Mock Board Exam Score</h3>
+                            <h1>65%</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="40" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>-65%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Reports -->
+
+            <!-- Settings -->
+            <div class="settings-content">
+                <div class="user-list">
+                    <div class="user">
+                        <img src="images/profile-2.jpg">
+                        <h2>Account</h2>
+                        <p>Manage your account</p>
+                    </div>
+                    <div class="user">
+                        <img src="images/profile-3.jpg">
+                        <h2>Preferences</h2>
+                        <p>Customize your experience</p>
+                    </div>
+                    <div class="user">
+                        <img src="images/profile-4.jpg">
+                        <h2>Privacy</h2>
+                        <p>Control your data</p>
+                    </div>
+                    <div class="user">
+                        <img src="images/plus.png">
+                        <h2>Security</h2>
+                        <p>Ensure your safety</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Settings -->
+
+        </main>
+        <!-- End of Main Content -->
+
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Jennie</b></p>
+                        <small class="text-muted">Reviewer</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-01.jpg">
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Nav -->
+            <div class="user-profile">
+                <div class="logo" style="text-align: center;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <img src="images/unc.png" style="width: 50px; height: 50px;">
+                        <img src="images/crimlogo.png" style="width: 50px; height: 50px;">
+                        <img src="images/ccslogo.png" style="width: 50px; height: 50px;">
+                        <img src="images/logoonly.png" style="width: 50px; height: 50px;">
+                    </div>
+                    <h2>University of Nueva Caceres</h2>
+                    <p>Criminal Justice Education</p>
+                </div>
+            </div>
+            
+
+            <div class="notes">
+                <div class="header">
+                    <h2>Notes</h2>
+                </div>
+                <textarea class="note-textarea" placeholder="Write your notes here..."></textarea>
+            </div>            
+        </div>
+    </div>
+    
+    <script>
+       
+        function navigateTo(url) {
+        const scrollPosition = window.scrollY;
+        sessionStorage.setItem('scrollPosition', scrollPosition);
+        document.body.classList.add('fade-out', 'active');
+            setTimeout(() => {
+                window.location.href = url;
+            }, 100);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('fade-out');
+            const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+            if (savedScrollPosition !== null) {
+                window.scrollTo(0, parseInt(savedScrollPosition, 10));
+                sessionStorage.removeItem('scrollPosition');
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const blurOverlay = document.getElementById('blurOverlay');
+        const preTest = document.getElementById('preTest');
+        const startTestButton = document.getElementById('startTestButton');
+        const doneButton = document.getElementById('doneButton');
+        const resultBox = document.getElementById('resultBox');
+
+        // Check if the pre-test has been completed
+        if (localStorage.getItem('preTestCompleted')) {
+            blurOverlay.style.display = 'none';
+        } else {
+            blurOverlay.style.display = 'block';
+        }
+
+        // Event listener for the start button to begin the test
+        startTestButton.addEventListener('click', function() {
+            preTest.style.display = 'none';
+            // Display the quiz box and start the timer
+            // (add your quiz box display logic here)
+        });
+
+        // Event listener for the done button to complete the test
+        doneButton.addEventListener('click', function() {
+            // Save the pre-test result to local storage
+            localStorage.setItem('preTestCompleted', 'true');
+            blurOverlay.style.display = 'none';
+        });
+
+        // Function to simulate the end of the test and show the result box
+        function showResultBox() {
+            // (calculate and display the test results here)
+            resultBox.style.display = 'block';
+        }
+
+        // Example function to start the pre-test (you can modify it as needed)
+        function startPreTest() {
+            preTest.style.display = 'block';
+            resultBox.style.display = 'none';
+            // Initialize the quiz (start timer, display questions, etc.)
+        }
+
+        const quizData = JSON.parse(localStorage.getItem('quizData')) || { userScore: 0, attempts: 0, highestScore: 0 };
+
+        // Update highest score in statistics
+        document.getElementById('quizCDI-highest-score').textContent = quizData.highestScore + '/20';
+
+
+        // Update subject score in statistics
+        document.getElementById('quizCDI-quiz-score').textContent = quizData.userScore + '/20';
+
+        // Update attempts in statistics
+        document.getElementById('quizCDI-attempts').textContent = quizData.attempts;
+    });
+            
+
+    
+        function showBookContent(bookNumber) {
+            document.getElementById('booksContainer').style.display = 'none';
+            
+            var bookContentDiv = document.getElementById('bookContent');
+            bookContentDiv.innerHTML = '';
+            
+            var bookContents = [
+            {
+                title: "Introduction to Criminology",
+                content: `
+                <p>
+                    <br><br>Criminology is the scientific study of crime, criminals, criminal behavior, and the criminal justice system. It encompasses various disciplines such as sociology, psychology, biology, anthropology, and law. By examining the causes, consequences, and prevention of crime, criminology seeks to understand and address the complex issues surrounding criminal behavior.
+                    <br><br>
+                    <strong>Key Concepts:</strong>
+                    <br><br>
+                    <strong>1. Crime:</strong> Defined as any act that violates the laws established by society. Crimes can range from minor offenses such as petty theft to serious offenses like murder.
+                    <br><br>
+                    <strong>2. Criminal Behavior:</strong> Refers to actions that contravene societal norms and are subject to punishment by law. Understanding the factors that contribute to criminal behavior is essential in developing effective crime prevention strategies.
+                    <br><br>
+                    <strong>3. Criminal Justice System:</strong> Comprises law enforcement agencies, courts, and correctional institutions responsible for maintaining social order and administering justice. It plays a crucial role in apprehending offenders, adjudicating cases, and rehabilitating criminals.
+                    <br><br>
+                    <strong>4. Victimology:</strong> Focuses on the study of victims of crime, including their experiences, vulnerabilities, and the impact of victimization on individuals and society. Victim-centered approaches aim to provide support and assistance to those affected by crime.
+                    <br><br>
+                    <strong>5. Theoretical Perspectives:</strong> Criminological theories seek to explain why individuals engage in criminal behavior. These theories range from biological and psychological perspectives to sociological and environmental factors influencing criminal conduct.
+                    <br><br>
+                    <strong>Importance of Criminology:</strong>
+                    <br><br>
+                    <strong>1. Crime Prevention:</strong> By identifying risk factors and understanding the root causes of crime, criminology contributes to the development of effective crime prevention strategies and interventions.
+                    <br><br>
+                    <strong>2. Policy Development:</strong> Criminological research informs policymakers and lawmakers in crafting legislation and policies aimed at reducing crime rates, enhancing public safety, and promoting justice.
+                    <br><br>
+                    <strong>3. Social Justice:</strong> Criminology advocates for fair and equitable treatment within the criminal justice system, addressing issues of inequality, discrimination, and systemic bias.
+                    <br><br>
+                    <strong>4. Community Engagement:</strong> Engaging communities in crime prevention efforts fosters collaboration between law enforcement, government agencies, and local residents, creating safer and more resilient neighborhoods.
+                    <br><br>
+                    <strong>Conclusion:</strong>
+                    <br><br>
+                    Criminology plays a vital role in understanding and addressing the complexities of crime and criminal behavior. By employing interdisciplinary approaches and evidence-based practices, criminologists strive to promote social justice, enhance public safety, and create a more just and equitable society.
+                    <br><br>
+                </p>
+            `
+            },
+                {
+                    title: "Content for Book 2",
+                    content: "<p>This is the content for Book 2.</p>"
+                },
+                {
+                title: "Content for Book 3",
+                content: "<p>This is the content for Book 3.</p>"
+            },
+            {
+                title: "Content for Book 4",
+                content: "<p>This is the content for Book 4.</p>"
+            },
+            {
+                title: "Content for Book 5",
+                content: "<p>This is the content for Book 5.</p>"
+            },
+            {
+                title: "Content for Book 6",
+                content: "<p>This is the content for Book 6.</p>"
+            },
+            {
+                title: "Content for Book 7",
+                content: "<p>This is the content for Book 7.</p>"
+            },
+            {
+                title: "Content for Book 8",
+                content: "<p>This is the content for Book 8.</p>"
+            },
+            {
+                title: "Content for Book 9",
+                content: "<p>This is the content for Book 9.</p>"
+            }
+            ];
+    
+            var content = bookContents[bookNumber - 1];
+            var contentDiv = document.createElement('div');
+            contentDiv.innerHTML = `
+                <button class="lecture-button" type="button" onclick="goBack()" style="display: inline-block; margin-right: 10px;">Back</button>
+                <h2>${content.title}</h2>
+                ${content.content}
+            `;
+            bookContentDiv.appendChild(contentDiv);
+            bookContentDiv.style.display = 'block';
+        }
+        
+        function goBack() {
+            document.getElementById('bookContent').style.display = 'none';
+            document.getElementById('booksContainer').style.display = 'block';
+        }
+
+        
+    </script>
+    
+    <script src="pre-test.js"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
