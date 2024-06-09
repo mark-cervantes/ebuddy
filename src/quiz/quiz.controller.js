@@ -1,5 +1,5 @@
 const {db} = require('../../firebase.js');
-const {getFirestore, collection, getDocs} = require('firebase/firestore');
+const {getFirestore, collection, getDocs} = require('firebase-admin/firestore');
 const {queryQuestions, queryOptions} = require('../APIs/query');
 const {QUIZ_COLLECTION_IDS} = require('./quiz.const');
 
@@ -38,7 +38,6 @@ async function quizController(req, res) {
 					} catch (error) {
 						reject(error)
 					}
-
 				})
 				addOptionsPromises.push(addOptionPromise)
 			}

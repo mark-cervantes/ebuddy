@@ -1,5 +1,5 @@
 const {db} = require('../../firebase.js');
-const {where, query, limit, getFirestore, collection, getDocs} = require('firebase/firestore');
+const {where, query, limit, getFirestore, collection, getDocs} = require('firebase-admin/firestore');
 
 /**
  *

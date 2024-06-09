@@ -1,5 +1,5 @@
 const { db } = require("../config/firebase");
-const { doc, setDoc } = "firebase/firestore";
+const { doc, setDoc } = "firebase-admin/firestore";
 async function getStatsController(req, res) {
 		try {
 			const userID = req.params?.userID;

@@ -5,27 +5,20 @@ const {
 	setPersistence,
 	inMemoryPersistence,
 	getAuth
-} = require("firebase/auth")
-const {app} = require('../../firebase')
+} = require("firebase-admin/auth")
+// const {app} = require('../../firebase')
+const {verifyUserToken} = require('./auth.util')
 
-async function login(req, res) {
-	const auth = getAuth(app);
-	setPersistence(auth, browserSessionPersistence).then(() => {
-		const {email, password} = req.body
-		signInWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
 
-			const user = userCredential.user;
-			res.status(200).json({user});
-
-		})
-		.catch((error) => {
-			res.status(401).json({message: error.message});
-		})
-	})
-	.catch((error) => {
-		res.status(500).json({message: error.message});
-	});
+async function saveSession(req, res, next) {
+	try {
+		console.log(JSON.stringify(req.body, Object.getOwnPropertyNames(req.body)))
+		req.session.accessToken = req.body.accessToken;
+		res.redirect('../public/Dashboard/dashboard.html')
+	} catch (error) {
+		console.error(error)
+		res.status(401).json({message: "Unauthorized"});
+	}
 }
 
 async function signup(req, res) {
@@ -40,5 +33,6 @@ async function signup(req, res) {
 }
 
 module.exports = {
-	login, signup
+	signup,
+	saveSession
 }

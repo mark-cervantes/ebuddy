@@ -1,4 +1,4 @@
-const { getAuth } = require('firebase/auth');
+const { getAuth } = require('firebase-admin/auth');
 const { app } = require('../../firebase')
 
 /**
@@ -10,7 +10,7 @@ const { app } = require('../../firebase')
 function verifyUserToken(firebaseIdToken) {
   // idToken comes from the client app
   getAuth(app)
-    .verifyIdToken(idToken)
+    .verifyIdToken(firebaseIdToken)
     .then((decodedToken) => {
       const uid = decodedToken.uid;
       return uid
@@ -18,4 +18,8 @@ function verifyUserToken(firebaseIdToken) {
     .catch((error) => {
       throw error
     });
+}
+
+module.exports = {
+  verifyUserToken
 }
