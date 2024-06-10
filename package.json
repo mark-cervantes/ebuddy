@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Senior Project for compliance for University of Nueva Caceres, BSCS curriculum",
   "main": "index.js",
-  "module": "module",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "npx nodemon --inspect index.js"

@@ -1,5 +1,5 @@
-const { getAuth } = require('firebase-admin/auth');
-const { app } = require('../../firebase')
+import { getAuth } from 'firebase-admin/auth';
+import { app } from '../../firebase.js';
 
 /**
  * 
@@ -19,7 +19,4 @@ function verifyUserToken(firebaseIdToken) {
       throw error
     });
 }
-
-module.exports = {
-  verifyUserToken
-}
+export { verifyUserToken };

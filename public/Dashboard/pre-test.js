@@ -1,4 +1,4 @@
-import { handlePreTestCompletion } from "./Dashboard/index.js";
+import { handlePreTestCompletion } from "../Dashboard/index.js";
 // Function to shuffle an array
 function shuffleArray(array) {
 	for (let i = array.length - 1; i > 0; i--) {

@@ -1,10 +1,3 @@
-const {
-	createUserWithEmailAndPassword,
-	getAuth
-} = require("firebase-admin/auth")
-// const {app} = require('../../firebase')
-const {verifyUserToken} = require('./auth.util')
-
 
 async function saveSession(req, res, next) {
 	try {
@@ -17,18 +10,4 @@ async function saveSession(req, res, next) {
 	}
 }
 
-async function signup(req, res) {
-	const auth = getAuth(app);
-	const {email, password} = req.body
-	createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-		const user = userCredential.user;
-		res.status(200).json({user});
-	}).catch(error => {
-		res.status(400).json({message: error.message});
-	})
-}
-
-module.exports = {
-	signup,
-	saveSession
-}
+export { saveSession };

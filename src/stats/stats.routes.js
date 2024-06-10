@@ -1,6 +1,8 @@
-const {applySessionMiddleware, verifyToken} = require('../auth/auth.middleware');
-const router = require('express').Router();
-const {setStatController: setStatsController} = require('./stats.controller');
+import { applySessionMiddleware, verifyToken } from '../auth/auth.middleware.js';
+import { Router } from 'express';
+import { setStatsController } from './stats.controller.js';
+
+const router = Router();
 
 // router.use('/', verifyToken, applySessionMiddleware)
 router.use('/', verifyToken, applySessionMiddleware)
@@ -8,4 +10,4 @@ router.patch('/user', () => {})
 router.get('/user', () => setStatsController)
 router.post('/attempt', () => { throw 'not yet implemented' })
 
-module.exports = router
+export default router

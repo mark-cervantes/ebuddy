@@ -674,7 +674,7 @@ if (!preTestTaken) {
 }
 
 // Function to handle actions after the pre-test is completed
-export function handlePreTestCompletion() {
+function handlePreTestCompletion() {
     // Set the flag to indicate that the pre-test has been taken
     (async () => {
         const preTestTakenres = await fetch('http://localhost:3000/stats/user')
@@ -779,3 +779,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+export {
+    handlePreTestCompletion
+}

@@ -1,14 +1,16 @@
 import express from "express";
 import bodyParser from "body-parser";
 import routes from "./routes.js";
-import {join} from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { dirname }  from "node:path"
 
 const app = express();
 const port = 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const rootDir = dirname(process.argv[1]);
 

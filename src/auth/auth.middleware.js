@@ -1,7 +1,7 @@
-const {verifyUserToken} = require('./auth.util')
-const session = require('express-session');
-const {getAuth} = require('firebase-admin/auth');
-const {app} = require('../../firebase');
+import { verifyUserToken } from './auth.util.js';
+import session from 'express-session';
+import { getAuth } from 'firebase-admin/auth';
+import { app } from '../../firebase.js';
 
 const sessionMiddleware = session({
 	secret: '133c6d9e-9194-45b6-b8a8-28eda47f13d4',
@@ -56,8 +56,4 @@ async function verifyToken(req, res, next) {
 		res.status(401).json({message: "Unauthorized"});
 	}
 }
-
-module.exports = {
-	verifyToken,
-	applySessionMiddleware
-}
+export { verifyToken, applySessionMiddleware };

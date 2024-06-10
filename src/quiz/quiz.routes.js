@@ -1,9 +1,9 @@
-const router = require('express').Router();
-const asyncHandler = require('express-async-handler');
-const {
-	quizController
-} = require('./quiz.controller.js');
+import { Router } from 'express';
+import asyncHandler from 'express-async-handler';
+import { quizController } from './quiz.controller.js';
+
+const router = Router();
 
 router.get('/:subjectID', asyncHandler(quizController));
 
-module.exports = router
+export default router;

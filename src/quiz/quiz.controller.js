@@ -1,12 +1,9 @@
-const {db} = require('../../firebase.js');
-const {getFirestore, collection, getDocs} = require('firebase-admin/firestore');
-const {queryQuestions, queryOptions} = require('../APIs/query');
-const {QUIZ_COLLECTION_IDS} = require('./quiz.const');
+import { queryQuestions, queryOptions } from '../APIs/query.js';
+import { QUIZ_COLLECTION_IDS } from './quiz.const.js';
+
 
 async function quizController(req, res) {
 	try {
-		const {queryQuestions, queryOptions} = require('../APIs/query.js');
-		const {QUIZ_COLLECTION_IDS} = require('./quiz.const.js');
 		const subjectID = req.params['subjectID'];
 
 		if (subjectID in QUIZ_COLLECTION_IDS) {
@@ -52,4 +49,4 @@ async function quizController(req, res) {
 	}
 }
 
-module.exports = {quizController}
+export { quizController }

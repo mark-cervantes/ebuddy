@@ -1,10 +1,10 @@
-const router = require('express').Router();
-const asyncHandler = require('express-async-handler');
+import { Router } from 'express';
+import asyncHandler from 'express-async-handler';
+import { saveSession } from './auth.controller.js';
+import { applySessionMiddleware, verifyToken } from './auth.middleware.js';
 
-const { signup, saveSession } = require('./auth.controller.js')
-const {applySessionMiddleware, verifyToken} = require('./auth.middleware');
+const router = Router();
 
-router.post('/saveSession', verifyToken, applySessionMiddleware, asyncHandler(saveSession))
-router.post('/signup', asyncHandler(signup))
+router.post('/saveSession', verifyToken, applySessionMiddleware, asyncHandler(saveSession));
 
-module.exports = router
+export default router;

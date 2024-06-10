@@ -1,23 +1,36 @@
-const { db } = require("../../firebase.js");
-const { doc, setDoc } = "firebase-admin/firestore";
+
+import { db } from '../../firebase.js';
+
 async function getStatsController(req, res) {
-		try {
-			const userID = req.params?.userID;
-			const statRef = doc(db, 'users')
-			setDoc(statRef,
-				{  }
-			)
-		} catch (error) {
-				res.status(500).json({ message: error.message });
-		}
-}
-
-
-async function setStatsController(req, res) {
 	try {
-		console.log(JSON.stringify(req.session))
-		db.collection('users').doc(req.session.uid)
+		const userid = req.params?.userid;
+		if (!userid) {
+			return res.status(400).send('User ID is required');
+		}
+
+		const statref = db.collection('users').doc(userid);
+		await statref.set({ /* your data here */ });
+
+		res.status(200).send('Document successfully written!');
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
 }
+
+async function setStatsController(req, res) {
+	try {
+		console.log(JSON.stringify(req.session));
+		if (!req.session.uid) {
+			return res.status(400).send('Session UID is required');
+		}
+
+		const userRef = db.collection('users').doc(req.session.uid);
+		await userRef.set({ /* your data here */ });
+
+		res.status(200).send('Document successfully written!');
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
+}
+
+export { getStatsController, setStatsController };
