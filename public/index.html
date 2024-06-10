@@ -110,8 +110,6 @@
 		createUserWithEmailAndPassword,
 		GoogleAuthProvider,
 		signInWithEmailAndPassword,
-		signInWithRedirect,
-		getRedirectResult
 	} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 	const firebaseConfig = {
@@ -140,7 +138,7 @@
 		evt.preventDefault();
 		createUserWithEmailAndPassword(auth, email.value, password.value)
 			.then((credentials) => {
-				console.log(credentials);
+				console.debug(credentials);
 				displaySuccessMessage();
 				document.getElementById('RegName').value = '';
 				document.getElementById('RegEmail').value = '';
@@ -152,8 +150,8 @@
 			})
 			.catch((error) => {
 				alert(error.message);
-				console.log(error.code);
-				console.log(error.message);
+				console.error(error.code);
+				console.error(error.message);
 			})
 	}
 
@@ -181,7 +179,10 @@
 				const userCredential = await signInWithEmailAndPassword(auth, email, password);
 				// Signed in
 				const user = userCredential.user;
-				console.debug(`user: ${user}`);
+				if (!user) {
+					throw new Error("User not found")
+				}
+				console.debug(`user: ${JSON.stringify(user)}`);
 				const saveSessionRes = fetch(`http://localhost:3000/auth/saveSession`, {
 					method: 'POST',
 					headers: {
@@ -191,6 +192,10 @@
 						accessToken: user.accessToken
 					})
 				})
+				if ((await saveSessionRes).status !== 201) {
+					throw new Error("Authentication Failed")
+				}
+				window.location.href = 'Dashboard/dashboard.html';
 			} catch (error) {
 				const errorCode = error.code;
 				const errorMessage = error.message;

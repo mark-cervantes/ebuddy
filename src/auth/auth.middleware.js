@@ -10,12 +10,34 @@ const sessionMiddleware = session({
 	cookie: { secure: false }
 });
 
-// Middleware to apply session middleware selectively
-const applySessionMiddleware = (req, res, next) => {
+/**
+ * Applies whatever other is on the req.session to the session.
+ * @param req
+ * @param res
+ * @param next
+ */
+function applySessionMiddleware(req, res, next) {
 	console.debug(`Applying session middleware`);
-	sessionMiddleware(req, res, next);
-};
+	sessionMiddleware(req, res, () => {
+		if (! req.session) {
+			console.error('Session middleware not applied')
+			return res.status(500).send('Session not applied')
+		}
+		next()
+	});
+}
 
+
+/**
+ * middleware that verifies the authenticitiy of the access token.
+ * if it is verified, the middleware has a sideeffect of adding the uid to the request (res.uid)
+ * else, it sends a 401 status code
+ *
+ * @param req
+ * @param res
+ * @param next
+ * @returns {Promise<*>}
+ */
 async function verifyToken(req, res, next) {
 	console.debug(`Verifying token:`);
 	console.debug(`req.body: ${JSON.stringify(req.body, Object.getOwnPropertyNames(req.body))}`);
@@ -26,6 +48,7 @@ async function verifyToken(req, res, next) {
 		const decodedToken = await getAuth(app).verifyIdToken(req.body.accessToken)
 		console.log(JSON.stringify(decodedToken))
 		const uid = decodedToken.uid;
+		req.session = { uid }
 		next()
 	} catch (error) {
 		console.error(error)

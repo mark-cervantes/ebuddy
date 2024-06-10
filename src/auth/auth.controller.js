@@ -1,9 +1,5 @@
 const {
 	createUserWithEmailAndPassword,
-	browserSessionPersistence,
-	signInWithEmailAndPassword,
-	setPersistence,
-	inMemoryPersistence,
 	getAuth
 } = require("firebase-admin/auth")
 // const {app} = require('../../firebase')
@@ -14,7 +10,7 @@ async function saveSession(req, res, next) {
 	try {
 		console.log(JSON.stringify(req.body, Object.getOwnPropertyNames(req.body)))
 		req.session.accessToken = req.body.accessToken;
-		res.redirect('../public/Dashboard/dashboard.html')
+		res.status(201).json({message: "Session saved"});
 	} catch (error) {
 		console.error(error)
 		res.status(401).json({message: "Unauthorized"});
