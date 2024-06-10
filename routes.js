@@ -1,7 +1,8 @@
-const router = require('express').Router();
-const quizRouter = require('./src/quiz/quiz.routes.js');
-const authRouter = require('./src/auth/auth.route.js');
-const statsRouter = require('./src/stats/stats.routes.js');
+import express from 'express';
+import quizRouter from './src/quiz/quiz.routes.js';
+import authRouter from './src/auth/auth.route.js';
+import statsRouter from './src/stats/stats.routes.js';
+const router = express.Router();
 
 
 router.get('/connection-test', (req, res) => {
@@ -20,4 +21,4 @@ router.get('/loopback', (req, res) => {
 	)
 })
 
-module.exports = router
+export default router

@@ -1,4 +1,4 @@
-const { db } = require("../config/firebase");
+const { db } = require("../../firebase.js");
 const { doc, setDoc } = "firebase-admin/firestore";
 async function getStatsController(req, res) {
 		try {
@@ -10,4 +10,14 @@ async function getStatsController(req, res) {
 		} catch (error) {
 				res.status(500).json({ message: error.message });
 		}
+}
+
+
+async function setStatsController(req, res) {
+	try {
+		console.log(JSON.stringify(req.session))
+		db.collection('users').doc(req.session.uid)
+	} catch (error) {
+		res.status(500).json({ message: error.message });
+	}
 }

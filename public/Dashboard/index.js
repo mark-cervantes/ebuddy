@@ -674,13 +674,20 @@ if (!preTestTaken) {
 }
 
 // Function to handle actions after the pre-test is completed
-function handlePreTestCompletion() {
+export function handlePreTestCompletion() {
     // Set the flag to indicate that the pre-test has been taken
+    (async () => {
+        const preTestTakenres = await fetch('http://localhost:3000/stats/user')
+        console.log('preTestTakenRes: ' + JSON.stringify(preTestTakenres))
+        const preTestJson = await preTestTakenres.json()
+        console.log('preTestJson: ' + JSON.stringify(preTestJson))
+    })()
     localStorage.setItem('preTestTaken', true);
 
     // Calculate statistics and save the results in local storage
     // Here, you can call a function to calculate statistics and save results
 }
+
 
 
 

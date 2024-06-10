@@ -2,27 +2,13 @@
 const { initializeApp } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+const admin = require('firebase-admin');
+const serviceAccount = require('./e-buddy-8c08f-firebase-adminsdk-wo5xo-14b10049be.json');
 
-// Your web firebaseApp's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-	apiKey: "AIzaSyB5YHU4AF9a5Xn-sywnYMmA0Exe-hvNYfI",
-	authDomain: "e-buddy-8c08f.firebaseapp.com",
-	databaseURL: "https://e-buddy-8c08f-default-rtdb.firebaseio.com",
-	projectId: "e-buddy-8c08f",
-	storageBucket: "e-buddy-8c08f.appspot.com",
-	messagingSenderId: "377857778256",
-	appId: "1:377857778256:web:a2de0ec20ec8b1eee52755",
-	measurementId: "G-55NWQWF1XL"
-};
+const app = admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount)
+});
 
+const db = admin.firestore();
 
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-
-// Initialize Firestore
-const db = getFirestore(firebaseApp);
-
-module.exports = { app: firebaseApp, db };
+module.exports = { app, db };

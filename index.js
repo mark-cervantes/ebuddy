@@ -1,13 +1,14 @@
-const express = require("express");
+import express from "express";
+import bodyParser from "body-parser";
+import routes from "./routes.js";
+import {join} from 'path';
+import morgan from 'morgan';
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import { dirname }  from "node:path"
+
 const app = express();
 const port = 3000;
-const bodyParser = require("body-parser");
-const routes = require("./routes.js");
-const {join} = require('path');
-const morgan = require('morgan');
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
-const { dirname }  = require("node:path")
 
 const rootDir = dirname(process.argv[1]);
 

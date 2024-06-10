@@ -42,10 +42,11 @@ async function verifyToken(req, res, next) {
 	console.debug(`Verifying token:`);
 	console.debug(`req.body: ${JSON.stringify(req.body, Object.getOwnPropertyNames(req.body))}`);
 	try {
-		if (!req.body.accessToken)
+		const accessToken = req?.body?.accessToken || req?.session?.accessToken;
+		if (! accessToken)
 			return res.status(401).contentType('application/json').send('No token provided');
 
-		const decodedToken = await getAuth(app).verifyIdToken(req.body.accessToken)
+		const decodedToken = await getAuth(app).verifyIdToken(accessToken)
 		console.log(JSON.stringify(decodedToken))
 		const uid = decodedToken.uid;
 		req.session = { uid }

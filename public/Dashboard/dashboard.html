@@ -978,13 +978,13 @@
         const quizData = JSON.parse(localStorage.getItem('quizData')) || { userScore: 0, attempts: 0, highestScore: 0 };
 
         // Update highest score in statistics
-        document.getElementById('quizCDI-highest-score').textContent = quizData?.highestScore ? "N/A" : quizData.highestScore + '/20';
-
-        // Update subject score in statistics
-        document.getElementById('quizCDI-quiz-score').textContent = quizData.userScore ? "N/A" : quizData.userScore + '/20';
-
-        // Update attempts in statistics
-        document.getElementById('quizCDI-quiz-score').textContent = quizData.attempts ? "N/A" : quizData.attempts + '/20';
+        document.getElementById('quizCDI-highest-score').textContent = quizData.highestScore + '/20';
+        //
+        // // Update subject score in statistics
+        document.getElementById('quizCDI-quiz-score').textContent = quizData.userScore + '/20';
+        //
+        // // Update attempts in statistics
+        document.getElementById('quizCDI-quiz-score').textContent = quizData.attempts + '/20';
     });
             
 
@@ -1084,7 +1084,7 @@
         
     </script>
     
-    <script src="pre-test.js"></script>
+    <script src="pre-test.mjs"></script>
     <script src="index.js"></script>
 
 </body>
