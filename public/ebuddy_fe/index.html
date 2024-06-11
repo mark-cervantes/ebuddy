@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<div id="app"></div>
+<script type="module" src="/main.js"></script>
 <div class="container" id="container">
 
 	<div class="toggle-container">
@@ -68,7 +70,6 @@
 
 	<div id="overlay" style="display: none;"></div>
 
-
 	<div class="form-container sign-in">
 		<form id="signin">
 			<h1>Sign In</h1>
@@ -91,15 +92,12 @@
 			<input type="password" placeholder="Password" id="password" required>
 			<a href="#">Forget Your Password?</a>
 
-			<!--			<a href="Dashboard/dashboard.html">-->
 			<button type="submit" class="btn btn-primary">Log in</button>
-			<!--			<input type="submit" class="btn btn-primary" value="Log in">-->
-			<!--			</a>-->
 		</form>
 	</div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js" type="module"></script>
 
 <script type="module">
 	import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'
@@ -195,7 +193,7 @@
 				if ((await saveSessionRes).status !== 201) {
 					throw new Error("Authentication Failed")
 				}
-				window.location.href = 'Dashboard/dashboard.html';
+				window.location.href = 'Dashboard/index.html';
 			} catch (error) {
 				const errorCode = error.code;
 				const errorMessage = error.message;

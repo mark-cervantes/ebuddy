@@ -7,7 +7,7 @@ const sessionMiddleware = session({
 	secret: '133c6d9e-9194-45b6-b8a8-28eda47f13d4',
 	resave: false,
 	saveUninitialized: false,
-	cookie: { secure: false }
+	cookie: { secure: false, httpOnly: true },
 });
 
 /**

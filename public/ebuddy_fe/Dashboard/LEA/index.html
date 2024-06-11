@@ -21,22 +21,31 @@
             <div class="image_container">
                 <img src="img/banner-CDI.png">
                 <div class="overlay_text">
-                    <h2>Correctional Administration</h2>
+                    <h2>Law Enforcement Administration</h2>
                     <br></br>                                
                     <div class="scores-container">
+                        <div class="score-item">
+                            <span class="label">Quiz Score:</span>
+                            <span id="quiz-score">0</span>
+                        </div>
+                        <br></br>
+                        <!--
                         <div class="score-item">
                             <span class="label">Highest Score:</span>
                             <span id="highest-score">0</span>
                         </div>
                         <div class="score-item">
-                            <span class="label">Current Score:</span>
-                            <span id="quiz-score">0</span>
+                            <span class="label">Lowest Score:</span>
+                            <span id="lowest-score">0</span>
                         </div>
-                        <br></br>
+                        <div class="score-item">
+                            <span class="label">Average:</span>
+                            <span id="average-score">0</span>
+                        </div>
+                        -->
                         <div class="score-item">
                             <span class="label">Attempts:</span>
                             <span id="attempts">0</span>
-                        </div>
                         </div>
                     </div>                    
                 </div>                
@@ -131,7 +140,7 @@
         function goBack() {
             document.body.classList.add('fade-out', 'active');
             setTimeout(() => {
-                window.location.href = '../dashboard.html';
+                window.location.href = '../index.html';
             }, 1000); // Duration should match the transition duration in the CSS
         }
 

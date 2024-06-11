@@ -1,0 +1,1 @@
+// document.querySelector('#app').innerHTML = `<iframe id="myHtml" src="./index.html"></iframe>`
